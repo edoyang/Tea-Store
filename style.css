@@ -1,0 +1,125 @@
+:root{
+    --carousel1:url("https://images.pexels.com/photos/230477/pexels-photo-230477.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+    --carousel2:url("https://images.pexels.com/photos/1493080/pexels-photo-1493080.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+    --carousel3:url("https://images.pexels.com/photos/405238/pexels-photo-405238.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+}
+
+*, body, html{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+* p{
+    padding: 0;
+    margin: 0;
+}
+
+.carousel-image{
+    height: 30vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.carousel-image > p{
+    background-color: rgba(255,255,255,0.5);
+    width: 200px;
+    position: absolute;
+    inset: auto auto auto 20px;
+    text-align: left;
+    white-space: pre-line;
+    padding-left: 20px;
+    
+}
+
+.carousel-item:nth-child(1) > .carousel-image{
+    background-image: var(--carousel1);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #282828;
+}
+
+.carousel-item:nth-child(2) > .carousel-image{
+    background-image: var(--carousel2);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #282828;
+}
+
+.carousel-item:nth-child(3) > .carousel-image{
+    background-image: var(--carousel3);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #282828;
+}
+
+.tea-collections, .tea-header{
+    padding: 0 50px;
+}
+
+.tea-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 50px;
+}
+
+.tea-collections {
+    display: flex;
+}
+
+.tea-list {
+    width: 20vw;
+}
+
+.tea-list > div{
+    display: flex;
+    width: 150px;
+    height: 40px;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+
+.tea-list > div > p{
+    position: relative;
+    inset: 0 -20px ;
+}
+
+.tea-list > div > button{
+    background-color: transparent;
+    border: none;
+    position: relative;
+    inset: 0 20px;
+}
+
+.tea-products{
+    width: 80vw;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 50px;
+}
+
+.product{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-image{
+    width: 250px;
+    height: 250px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    background: #282828;
+    color: white;
+    border-radius: 8px;
+}
