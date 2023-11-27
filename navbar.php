@@ -22,8 +22,10 @@ body, html{
     color: var(--navbar_color);
     padding: 0px 100px;
     height: 60px;
+    width: 100%;
     position: sticky;
     inset: 0;
+    z-index: 10;
 }
 
 .logo {
@@ -53,7 +55,7 @@ body, html{
 .search-container {
     display: flex;
     align-items: center;
-    width: 200px;
+    width: 250px;
     position: relative;
     justify-content: center;
 }
@@ -72,7 +74,7 @@ body, html{
     cursor: pointer;
     transform: translateX(0);
     opacity: 1;
-    background-image: url('search-icon.svg');
+    background-image: url('assets/search-icon.svg');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -190,13 +192,16 @@ body, html{
         <a href="#">Menu 1</a>
         <a href="#">Menu 2</a>
         <a href="#">Menu 3</a>
-    </div>
-    <div class="search-container">
-        <div class="search-icon">
+        <div class="search-container">
+            <div class="search-icon">
+            </div>
+            <input type="text" class="search-input" />
+            <button class="search-btn">Search</button>
         </div>
-        <input type="text" class="search-input" />
-        <button class="search-btn">Search</button>
-    </div>    
+    </div>
+    <div class="login">
+        <a href="login.php">Login or Register</a>
+    </div>   
     <div class="hamburger">
         <span></span>
         <span></span>

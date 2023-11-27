@@ -58,26 +58,24 @@
     background-color: #282828;
 }
 
-.tea-collections, .tea-header{
-    padding: 0 50px;
-}
-
-.tea-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 50px;
-}
-
 .tea-collections {
     display: flex;
 }
 
 .tea-list {
     width: 20vw;
+    position: sticky;
+    -webkit-position: sticky;
+    top: 80px;
+    height: 100vh;
+    left: 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
 }
 
 .tea-list > div{
+    align-self: center;
     display: flex;
     width: 150px;
     height: 40px;
@@ -98,10 +96,24 @@
     inset: 0 20px;
 }
 
-.tea-products{
+.product-controller{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
     width: 80vw;
+}
+
+.product-controller > button{
+    align-self: flex-end;
+    margin-right: 30px;
+}
+
+.tea-products{
+    width: 100%;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3 , 1fr);
     row-gap: 50px;
 }
 
@@ -109,7 +121,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
 }
 
 .product-image{
