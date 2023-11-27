@@ -200,8 +200,10 @@ body, html{
         </div>
     </div>
     <div class="login">
-        <a href="login.php">Login or Register</a>
-    </div>   
+    <a href="<?php echo isset($_SESSION['user_id']) ? 'logout.php' : 'login.php'; ?>" id="loginLogoutLink">
+        <?php echo isset($_SESSION['user_id']) ? 'Logout' : 'Login or Register'; ?>
+    </a>
+</div>
     <div class="hamburger">
         <span></span>
         <span></span>
@@ -254,4 +256,11 @@ window.addEventListener('scroll', () => {
     }
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+    const loginLink = document.querySelector('.login a');
+    if (loginLink.textContent.trim() === 'Logout') {
+        loginLink.style.color = 'red';
+        loginLink.style.textDecoration = 'none';
+    }
+});
 </script>

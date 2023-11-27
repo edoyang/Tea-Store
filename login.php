@@ -1,17 +1,7 @@
 <?php
 session_start(); 
-$host = 'localhost';
-$dbname = 'tea_store';
-$user = 'root';
-$pass = '';
 
-$conn = new mysqli($host, $user, $pass, $dbname);
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-$error_message = ''; 
+include 'db_connect.php';
 
 if (isset($_POST['login'])) {
     $email = $conn->real_escape_string($_POST['email']);
