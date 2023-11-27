@@ -14,7 +14,6 @@
             echo '<p>' . htmlspecialchars($row["product_name"]) . '</p>';
             echo '<p>$' . number_format($row["price"], 2) . '</p>';
             if (isset($_SESSION['user_id'])) {
-                // Button to add to cart
                 echo '<button onclick="addToCart(' . $row['product_id'] . ')">Add to Cart</button>';
             } else {
                 echo '<a href="login.php">Login to Add to Cart</a>';
@@ -35,10 +34,13 @@ function addToCart(productId) {
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     xhr.onload = function () {
         if (xhr.status === 200) {
-            var newQuantity = xhr.responseText;
-            document.getElementById('cart-counter').textContent = newQuantity;
+            var cartList = document.getElementById('cart-items');
+            cartList.innerHTML = xhr.responseText; // Assuming you return the <li> elements for the cart
+            var cartCounter = document.getElementById('cart-counter');
+            cartCounter.textContent = cartList.getElementsByTagName('li').length; // Update the counter based on the number of <li> elements
         }
     };
     xhr.send('product_id=' + productId);
 }
+
 </script>
