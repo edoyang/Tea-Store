@@ -24,7 +24,9 @@ session_start();
         <?php
         include 'filter.php';
         include 'product_controller.php';
+        if (isset($_SESSION['user_id'])) {
         include 'cart.php';
+        }
         ?>
     </div>
 </body>

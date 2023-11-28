@@ -15,7 +15,7 @@ if (!isset($_SESSION['shopping_cart'])) {
     <ul id="cart-items" style="list-style-type: none; padding: 0;">
         <?php foreach ($_SESSION['shopping_cart'] as $product_id => $details): ?>
             <li id="cart-item-<?php echo $product_id; ?>">
-                <?php echo htmlspecialchars($details['name']); ?> - Quantity: <?php echo $details['quantity']; ?>
+                <?php echo htmlspecialchars($details['name']); ?> x<?php echo $details['quantity']; ?>
                 <button onclick="removeFromCart(<?php echo $product_id; ?>)" style="background-color: #f44336; color: white; border: none; padding: 5px; cursor: pointer;">Remove</button>
             </li>
         <?php endforeach; ?>

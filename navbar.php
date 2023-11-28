@@ -188,22 +188,19 @@ body, html{
 </style>
 <div class="navbar">
     <div class="logo">LOGO</div>
+    <?php
+    include 'search.php'
+    ?>
     <div class="menu">
         <a href="#">Menu 1</a>
         <a href="#">Menu 2</a>
         <a href="#">Menu 3</a>
-        <div class="search-container">
-            <div class="search-icon">
-            </div>
-            <input type="text" class="search-input" />
-            <button class="search-btn">Search</button>
+        <div class="login">
+        <a href="<?php echo isset($_SESSION['user_id']) ? 'logout.php' : 'login.php'; ?>" id="loginLogoutLink">
+            <?php echo isset($_SESSION['user_id']) ? 'Logout' : 'Login or Register'; ?>
+        </a>
         </div>
     </div>
-    <div class="login">
-    <a href="<?php echo isset($_SESSION['user_id']) ? 'logout.php' : 'login.php'; ?>" id="loginLogoutLink">
-        <?php echo isset($_SESSION['user_id']) ? 'Logout' : 'Login or Register'; ?>
-    </a>
-</div>
     <div class="hamburger">
         <span></span>
         <span></span>
@@ -217,10 +214,6 @@ const navbar = document.querySelector('.navbar');
 
 searchIcon.addEventListener('click', () => {
     searchContainer.classList.add('active');
-});
-
-document.querySelector('.search-btn').addEventListener('click', () => {
-    // Search logic goes here
 });
 
 const hamburger = document.querySelector('.hamburger');
@@ -243,11 +236,11 @@ window.addEventListener('click', (event) => {
     }
 });
 
-// Keep the existing scroll event listener
 window.addEventListener('scroll', () => {
     if (window.scrollY > 100) {
         if (searchContainer.classList.contains('active')) {
             searchContainer.classList.remove('active');
+            searchResult.style.visibility = 'hidden';
         }
         if (menu.classList.contains('open')) {
             menu.classList.remove('open');
