@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($password !== $confirm_password) {
         $registration_error_message = "Passwords do not match.";
     } else {
-        $stmt = $conn->prepare("INSERT INTO users (first_name, last_name, email, password, member_type) VALUES (?, ?, ?, ?, 'Member')");
+        $stmt = $conn->prepare("INSERT INTO users (first_name, last_name, email, password, user_type) VALUES (?, ?, ?, ?, 'Member')");
         $stmt->bind_param("ssss", $first_name, $last_name, $email, $password); // Storing the password as plain text
         if ($stmt->execute()) {
             header("Location: login.php");
