@@ -16,7 +16,7 @@ if (isset($_POST['login'])) {
         $user = $result->fetch_assoc();
         
         if ($password === $user['password']) {
-            $_SESSION['user_id'] = $user['member_id'];
+            $_SESSION['user_id'] = $user['user_id'];
             $_SESSION['user_email'] = $user['email'];
             header("Location: index.php"); 
             exit();
@@ -48,7 +48,6 @@ if (isset($_SESSION['error_message'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <style>
-        /* Basic styling; update as needed */
         body {
             font-family: Arial, sans-serif;
             display: flex;

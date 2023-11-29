@@ -68,6 +68,8 @@ body, html{
 
 .search-icon {
     border: 1px solid transparent;
+    position: absolute;
+    right: 0;
     border-radius: 100%;
     height: 30px;
     width: 30px;
@@ -115,6 +117,17 @@ body, html{
     padding: 4px;
     pointer-events: auto;
     opacity: 1;
+}
+
+.dashboard {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.bag{
+    position: relative;
+
 }
 
 @media (max-width: 768px) {
@@ -188,18 +201,26 @@ body, html{
 </style>
 <div class="navbar">
     <div class="logo">LOGO</div>
-    <?php
-    include 'search.php'
-    ?>
     <div class="menu">
         <a href="#">Menu 1</a>
         <a href="#">Menu 2</a>
         <a href="#">Menu 3</a>
-        <div class="login">
-        <a href="<?php echo isset($_SESSION['user_id']) ? 'logout.php' : 'login.php'; ?>" id="loginLogoutLink">
-            <?php echo isset($_SESSION['user_id']) ? 'Logout' : 'Login or Register'; ?>
-        </a>
+    </div>
+    <div class="dashboard">
+        <?php
+        include 'search.php'
+        ?>
+        <div class="profile" style="position:relative;">
+            <img src="assets/profile.svg" alt="profile.svg" width="22px" height="22px">
+            <div class="profile-container" style="display: none;"></div>
         </div>
+        <div class="bag">
+            <?php
+            include 'cart.php';
+            ?>
+        </div>
+    </div>
+
     </div>
     <div class="hamburger">
         <span></span>
@@ -211,6 +232,8 @@ body, html{
 const searchContainer = document.querySelector('.search-container');
 const searchIcon = document.querySelector('.search-icon');
 const navbar = document.querySelector('.navbar');
+const profileIcon = document.querySelector('.profile img'); // Select the profile icon
+const profileContainer = document.querySelector('.profile-container'); // Select the profile container
 
 searchIcon.addEventListener('click', () => {
     searchContainer.classList.add('active');
@@ -237,7 +260,8 @@ window.addEventListener('click', (event) => {
 });
 
 window.addEventListener('scroll', () => {
-    if (window.scrollY > 100) {
+    if (window.scrollY % 500 < 50) {
+        profileContainer.style.display = 'none';
         if (searchContainer.classList.contains('active')) {
             searchContainer.classList.remove('active');
             searchResult.style.visibility = 'hidden';
@@ -249,11 +273,19 @@ window.addEventListener('scroll', () => {
     }
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-    const loginLink = document.querySelector('.login a');
-    if (loginLink.textContent.trim() === 'Logout') {
-        loginLink.style.color = 'red';
-        loginLink.style.textDecoration = 'none';
-    }
+profileIcon.addEventListener('click', () => {
+    fetch('profile.php')
+        .then(response => response.text())
+        .then(html => {
+            profileContainer.innerHTML = html;
+            profileContainer.style.display = profileContainer.style.display === 'none' ? 'block' : 'none';
+            
+            // Execute the script for the login link
+            const loginLink = profileContainer.querySelector('.login a');
+            if (loginLink && loginLink.textContent.trim() === 'Logout') {
+                loginLink.style.color = 'red';
+            }
+        })
+        .catch(error => console.error('Error loading profile:', error));
 });
 </script>
