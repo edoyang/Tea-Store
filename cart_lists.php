@@ -1,6 +1,41 @@
-<div class='cart-list' style='position: fixed; bottom: 10px; right: 10px; width: 300px; background: #FFF; border: 1px solid #000; padding: 10px; box-shadow: 0px 0px 5px rgba(0,0,0,0.2); z-index: 1000;'>
-    <h3>Shopping Cart <img src='cart.svg' alt='Cart' style='width: 24px; vertical-align: middle;'></h3>
-    <a href="?toggleCart=1" style="position: absolute; top: 5px; right: 5px;">Close</a>
+<style>
+    .cart-list {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    width: 300px;
+    background: #FFF;
+    border: 1px solid #000;
+    padding: 10px;
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.2);
+    z-index: 1000;
+}
+
+.cart-list h3 img {
+    width: 24px;
+    vertical-align: middle;
+}
+
+.close-cart {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+.btn-danger {
+    /* Add styles for your 'btn-danger' class here if needed */
+}
+
+.btn-primary {
+    /* Add styles for your 'btn-primary' class here if needed */
+}
+
+/* Add any other styles as required */
+</style>
+
+<div class='cart-list'>
+    <h3>Shopping Cart <img src='cart.svg' alt='Cart'></h3>
+    <a href="?toggleCart=1" class="close-cart">Close</a>
     <?php
     $total_cost = 0;
     if (count($_SESSION['shopping_cart']) > 0) {

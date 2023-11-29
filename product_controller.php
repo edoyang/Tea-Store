@@ -35,9 +35,9 @@ function addToCart(productId) {
     xhr.onload = function () {
         if (xhr.status === 200) {
             var cartList = document.getElementById('cart-items');
-            cartList.innerHTML = xhr.responseText; // Assuming you return the <li> elements for the cart
+            cartList.innerHTML = xhr.responseText;
             var cartCounter = document.getElementById('cart-counter');
-            cartCounter.textContent = cartList.getElementsByTagName('li').length; // Update the counter based on the number of <li> elements
+            cartCounter.textContent = cartList.getElementsByTagName('div').length;
         }
     };
     xhr.send('product_id=' + productId);
