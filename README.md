@@ -1,3 +1,5 @@
+#SQL Line for PhpMyAdmin SQL#
+
 -- Create `orders` table
 CREATE TABLE `orders` (
   `order_id` int(11) NOT NULL,
